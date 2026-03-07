@@ -2170,58 +2170,7 @@
         }
 
         // Contact form
-        <?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-
-$mail = new PHPMailer(true);
-
-try {
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-$subject = $_POST['subject'];
-$message = $_POST['message'];
-
-$mail->isSMTP();
-$mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
-
-$mail->Username = 'lyvrotechnologies@gmail.com';
-$mail->Password = 'Techno@1234';
-
-$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
-
-$mail->setFrom($email, $name);
-$mail->addAddress('lyvrotechnologies@gmail.com');
-
-$mail->Subject = $subject;
-
-$mail->Body = "
-Name: $name
-Email: $email
-
-Message:
-$message
-";
-
-$mail->send();
-
-echo "Message Sent Successfully";
-
-} catch (Exception $e) {
-
-echo "Message Failed";
-
-}
-
-?>
+       
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             showToast('Message sent successfully! We will get back to you soon.', 'success');
@@ -2360,6 +2309,7 @@ echo "Message Failed";
 </body>
 
 </html>
+
 
 
 
